@@ -1,4 +1,4 @@
 -r base.txt
 
 gunicorn==23.0.0
-psycopg[c]==3.2.1
+# psycopg[c]==3.2.1
