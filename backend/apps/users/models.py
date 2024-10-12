@@ -7,9 +7,12 @@ from django.utils import timezone
 from .managers import CustomUserManager
 from django.core.validators import MinLengthValidator
 from .validators import (
+    cpf_regex_validator,
+    email_regex_validator,
     legal_age_validator,
-    valid_cpf_validator,
-    phone_number_regex_validator
+    name_regex_validator,
+    phone_number_regex_validator,
+    valid_cpf_validator
 )
 
 
@@ -25,31 +28,39 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         (ACCESS_LEVEL_FUNCIONARIO, 'Funcionário'),
     ]
 
-    name = models.CharField(_("name"), max_length=150, blank=True)
-    email = models.EmailField(_("email address"), unique=True)
+    name = models.CharField(
+        _("name"),
+        max_length=150,
+        validators=[MinLengthValidator(2), name_regex_validator]
+    )
+    email = models.EmailField(
+        _("email address"),
+        validators=[email_regex_validator],
+        unique=True
+    )
     cpf = models.CharField(
         _("CPF"),
         max_length=11,
-        validators=[valid_cpf_validator, MinLengthValidator(11)],
-        unique=True,
-        blank=True
+        validators=[
+            valid_cpf_validator,
+            cpf_regex_validator,
+            MinLengthValidator(11)
+        ],
+        unique=True
     )
     date_of_birth = models.DateField(
         _("date of birth"),
-        validators=[legal_age_validator],
-        blank=True
+        validators=[legal_age_validator]
     )
     phone_number = models.CharField(
         _("phone number"),
         max_length=11,
-        validators=[phone_number_regex_validator],
-        blank=True
+        validators=[phone_number_regex_validator, MinLengthValidator(11)]
     )
     access_level = models.CharField(
         _("acess_level"),
         max_length=1,
-        choices=ACCESS_LEVEL_CHOICES,
-        blank=True
+        choices=ACCESS_LEVEL_CHOICES
     )
     is_staff = models.BooleanField(
         _("staff status"),
@@ -83,3 +94,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def email_user(self, subject, message, from_email=None, **kwargs):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+    def __str__(self):
+        return str(self.email)

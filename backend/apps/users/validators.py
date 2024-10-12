@@ -4,8 +4,27 @@ from django.core.validators import ValidationError
 from dateutil.relativedelta import relativedelta
 from django.core.validators import RegexValidator
 
+
+name_regex_validator = RegexValidator(
+    regex=r'^[a-zá-ùA-ZÁ-Ù]+(?:[\s][a-zá-ùA-ZÁ-Ù]+)+$',
+    message="O nome deve conter apenas letras"
+)
+
+
 phone_number_regex_validator = RegexValidator(
-    regex=r'^\d{11}$',
+    regex=r'^[0-9]{11}$',
+    message="Número de telefone deve conter apenas e estar no formato: 'DDD9XXXXXXXX'"
+)
+
+
+cpf_regex_validator = RegexValidator(
+    regex=r'^[0-9]{11}$',
+    message="O CPF de conter 11 números"
+)
+
+
+email_regex_validator = RegexValidator(
+    regex=r"^[a-zA-Z0-9._]+@[a-z]+\.com$",
     message="Número de telefone deve estar no formato: 'DDD9XXXXXXXX'"
 )
 
