@@ -9,7 +9,8 @@ from rest_framework.decorators import action
 
 from .serializers import (
     UserSerializer,
-    UserCreateSerializer
+    UserCreateSerializer,
+    UserUpdateSerializer
 )
 
 
@@ -21,8 +22,10 @@ class UserModelViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
     def get_serializer_class(self):
-        if self.action in ['create', 'partial_update']:
+        if self.action in ['create']:
             return UserCreateSerializer
+        if self.action in ['update', 'partial_update']:
+            return UserUpdateSerializer
         return UserSerializer
 
     def get_permissions(self):
