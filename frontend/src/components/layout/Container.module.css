@@ -5,6 +5,7 @@
   margin: 0 auto; /* Centraliza o container na página */
   justify-content: space-between;
   flex-wrap: wrap;
+  display: flex;
 }
 
 /* Estilo para o conteúdo interno, caso precise */
@@ -17,6 +18,6 @@
 }
 
 .column {
-    flex-direction: column;
-    justify-content: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
 }

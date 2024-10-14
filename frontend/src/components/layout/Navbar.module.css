@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centraliza verticalmente a logo e os itens da lista */
+    background-color: #222;
+    padding: 1em;
+}
+
+.navbar img {
+    max-width: 50px; /* Controla o tamanho da logo */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    align-items: center; /* Centraliza verticalmente os itens da lista */
+    margin: 0; /* Remove o espaço em branco extra */
+    padding: 0;
+}
+
+.item {
+    margin-right: 1em;
+}
+
+.item a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.item a:hover {
+    color: #ffbb33;
+}
