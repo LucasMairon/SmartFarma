@@ -1,0 +1,22 @@
+/* Define a largura e o alinhamento do container */
+.container {
+  width: 90%; /* Largura de 90% da tela */
+  max-width: 1200px; /* Limita o máximo de largura */
+  margin: 0 auto; /* Centraliza o container na página */
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Estilo para o conteúdo interno, caso precise */
+.content {
+  min-height: 75%;
+}
+
+.start {
+  justify-content: flex-start;
+}
+
+.column {
+    flex-direction: column;
+    justify-content: flex-start;
+}
