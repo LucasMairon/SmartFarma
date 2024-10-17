@@ -2,8 +2,8 @@
 
 import django.core.validators
 import django.utils.timezone
-import users.managers
-import users.validators
+import apps.users.managers
+import apps.users.validators
 from django.db import migrations, models
 
 
@@ -25,8 +25,8 @@ class Migration(migrations.Migration):
                 ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
                 ('name', models.CharField(blank=True, max_length=150, verbose_name='name')),
                 ('email', models.EmailField(max_length=254, unique=True, verbose_name='email address')),
-                ('cpf', models.CharField(blank=True, max_length=11, unique=True, validators=[users.validators.valid_cpf_validator, django.core.validators.MinLengthValidator(11)], verbose_name='CPF')),
-                ('date_of_birth', models.DateField(blank=True, validators=[users.validators.legal_age_validator], verbose_name='date of birth')),
+                ('cpf', models.CharField(blank=True, max_length=11, unique=True, validators=[apps.users.validators.valid_cpf_validator, django.core.validators.MinLengthValidator(11)], verbose_name='CPF')),
+                ('date_of_birth', models.DateField(blank=True, validators=[apps.users.validators.legal_age_validator], verbose_name='date of birth')),
                 ('phone_number', models.CharField(blank=True, max_length=11, validators=[django.core.validators.RegexValidator(message="Número de telefone deve estar no formato: 'DDD9XXXXXXXX'", regex='^\\d{11}$')], verbose_name='phone number')),
                 ('access_level', models.CharField(blank=True, choices=[('C', 'Cliente'), ('G', 'Gerente'), ('F', 'Funcionário')], max_length=1, verbose_name='acess_level')),
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'users',
             },
             managers=[
-                ('objects', users.managers.CustomUserManager()),
+                ('objects', apps.users.managers.CustomUserManager()),
             ],
         ),
     ]
