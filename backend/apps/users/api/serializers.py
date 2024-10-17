@@ -13,7 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'name', 'email', 'cpf', 'date_of_birth',
-                  'phone_number', 'access_level', 'addresses')
+                  'phone_number', 'addresses')
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
@@ -23,7 +23,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('name', 'email', 'cpf', 'date_of_birth',
-                  'phone_number', 'access_level', 'address', 'password')
+                  'phone_number', 'address', 'password')
 
     def create(self, validated_data):
         address_data = validated_data.pop('address')
@@ -40,7 +40,7 @@ class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('name', 'email', 'cpf', 'date_of_birth',
-                  'phone_number', 'access_level', 'password')
+                  'phone_number', 'password')
 
     def update(self, instance, validated_data):
         instance.name = validated_data.get('name', instance.name)
@@ -50,8 +50,6 @@ class UserUpdateSerializer(serializers.ModelSerializer):
             'date_of_birth', instance.date_of_birth)
         instance.phone_number = validated_data.get(
             'phone_number', instance.phone_number)
-        instance.access_level = validated_data.get(
-            'access_level', instance.access_level)
         password = validated_data.get('password')
         if password:
             instance.set_password(password)

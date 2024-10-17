@@ -18,16 +18,6 @@ from .validators import (
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
 
-    ACCESS_LEVEL_CLIENTE = 'C'
-    ACCESS_LEVEL_GERENTE = 'G'
-    ACCESS_LEVEL_FUNCIONARIO = 'F'
-
-    ACCESS_LEVEL_CHOICES = [
-        (ACCESS_LEVEL_CLIENTE, 'Cliente'),
-        (ACCESS_LEVEL_GERENTE, 'Gerente'),
-        (ACCESS_LEVEL_FUNCIONARIO, 'Funcionário'),
-    ]
-
     name = models.CharField(
         _("name"),
         max_length=150,
@@ -56,11 +46,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         _("phone number"),
         max_length=11,
         validators=[phone_number_regex_validator, MinLengthValidator(11)]
-    )
-    access_level = models.CharField(
-        _("acess_level"),
-        max_length=1,
-        choices=ACCESS_LEVEL_CHOICES
     )
     is_staff = models.BooleanField(
         _("staff status"),
