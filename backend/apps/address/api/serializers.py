@@ -21,3 +21,11 @@ class AddressSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         self.if_default_is_true_update_for_false(validated_data)
         return super().update(instance, validated_data)
+
+
+class AddressUserCreateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Address
+        fields = ("street", "city", 'state', 'number', 'neighborhood',
+                  'complement', 'reference_point', 'zip_code')

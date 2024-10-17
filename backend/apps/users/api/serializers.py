@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from apps.address.api.serializers import AddressSerializer
+from apps.address.api.serializers import AddressSerializer, AddressUserCreateSerializer
 from apps.address.models import Address
 
 User = get_user_model()
@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserCreateSerializer(serializers.ModelSerializer):
 
-    address = AddressSerializer()
+    address = AddressUserCreateSerializer()
 
     class Meta:
         model = User
