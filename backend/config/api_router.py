@@ -7,12 +7,14 @@ from rest_framework_simplejwt.views import (
 
 from apps.users.api.views import UserModelViewSet, LogoutAPIView
 from apps.address.api.views import AddressModelViewSet
+from apps.product.api.views import ProductModelViewSet
 
 from rest_framework.routers import SimpleRouter, DefaultRouter
 
 router = DefaultRouter() if settings.DEBUG else SimpleRouter()
 router.register('users', UserModelViewSet, basename='users')
 router.register("addresses", AddressModelViewSet, basename="addresses")
+router.register("products", ProductModelViewSet, basename="products")
 
 
 urlpatterns = [
