@@ -27,12 +27,18 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    "rest_framework",
     "rest_framework_simplejwt",
     "drf_spectacular",
 ]
 
 LOCAL_APPS = [
-    "users",
+    "apps.users",
+    "apps.address",
+    "apps.cart",
+    "apps.product",
+    "apps.order_item",
+    "apps.purchase",
 ]
 
 

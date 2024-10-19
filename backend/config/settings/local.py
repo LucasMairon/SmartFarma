@@ -9,7 +9,7 @@ from .base import env
 DEBUG = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env.str(
-    "SECRET_KEY",
+    "DJANGO_SECRET_KEY",
     default='django-insecure-m^ghzu1fndh#)zmylkgpd=6wxc^+va8cqx^(kcvk9k_$#k+%ch'
 )
 
