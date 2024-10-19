@@ -1,17 +1,19 @@
-/* Define a largura e o alinhamento do container */
+/* Container.module.css */
 .container {
-  width: 90%; /* Largura de 90% da tela */
-  max-width: 1200px; /* Limita o máximo de largura */
-  margin: 0 auto; /* Centraliza o container na página */
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  display: flex;
 }
 
-/* Estilo para o conteúdo interno, caso precise */
-.content {
-  min-height: 75%;
+/* Aplica o layout de "min-height" apenas na área de conteúdo principal */
+.min-height {
+  min-height: calc(100vh - 100px); /* Calcula a altura para empurrar o footer */
+  flex-grow: 1;
 }
+
 
 .start {
   justify-content: flex-start;

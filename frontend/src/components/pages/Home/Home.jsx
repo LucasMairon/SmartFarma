@@ -1,19 +1,45 @@
+import styles from "./Home.module.css";
+
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-      <p>
-        What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing
-        and typesetting industry. Lorem Ipsum has been the industrys standard
-        dummy text ever since the 1500s, when an unknown printer took a galley
-        of type and scrambled it to make a type specimen book. It has survived
-        not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with
-        the release of Letraset sheets containing Lorem Ipsum passages, and more
-        recently with desktop publishing software like Aldus PageMaker including
-        versions of Lorem Ipsum.
-      </p>
-    </div>
+    <section className={styles.home}>
+      <div className={styles.banner}>
+        <h1>Bem-vindo à SmartFarma</h1>
+        <p>Os melhores medicamentos, na palma da sua mão!</p>
+      </div>
+
+      <div className={styles.sectionHighlight}>
+        <h2>Produtos em Destaque</h2>
+        <div className={styles.products}>
+          <div className={styles.product}>
+            <img src="produto1.jpg" alt="Produto 1" />
+            <h3>Produto 1</h3>
+            <p>R$ 59,90</p>
+            <button>Comprar</button>
+          </div>
+          <div className={styles.product}>
+            <img src="produto2.jpg" alt="Produto 2" />
+            <h3>Produto 2</h3>
+            <p>R$ 29,90</p>
+            <button>Comprar</button>
+          </div>
+          <div className={styles.product}>
+            <img src="produto3.jpg" alt="Produto 3" />
+            <h3>Produto 3</h3>
+            <p>R$ 89,90</p>
+            <button>Comprar</button>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.promoSection}>
+        <h2>Promoções Especiais</h2>
+        <p>
+          Descontos de até <span>50%</span> em medicamentos selecionados!
+        </p>
+        <button>Ver Promoções</button>
+      </div>
+    </section>
   );
 }
 
