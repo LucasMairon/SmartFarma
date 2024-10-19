@@ -1,17 +1,17 @@
 from django.core.validators import RegexValidator
 
 names_with_space_regex_validator = RegexValidator(
-    regex=r'^[a-zá-ùA-ZÁ-Ù]+(?:[\s][a-zá-ùA-ZÁ-Ù]+)+$',
+    regex=r'^[a-zá-ùA-ZÁ-Ù]+((?:[\s][a-zá-ùA-ZÁ-Ù]+)?)+$',
     message="O nome deve conter apenas letras"
 )
 
 names_with_space_and_numbers_regex_validator = RegexValidator(
-    regex=r'^[a-zá-ùA-ZÁ-Ù0-9]+(?:[\s][a-zá-ùA-ZÁ-Ù0-9]+)+$',
+    regex=r'^[a-zá-ùA-ZÁ-Ù0-9]+((?:[\s][a-zá-ùA-ZÁ-Ù0-9]+)?)+$',
     message="O nome deve conter apenas letras e números"
 )
 
 number_regex_validator = RegexValidator(
-    regex=r'^[a-zA-Z0-9-]+(?:[a-zA-Z0-9-]+)+$',
+    regex=r'^[a-zA-Z0-9-]+((?:[a-zA-Z0-9-]+)?)+$',
     message="O nome deve conter apenas letras números e o serparador '-'"
 )
 
