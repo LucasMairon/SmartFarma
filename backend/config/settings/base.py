@@ -37,6 +37,8 @@ LOCAL_APPS = [
     "apps.address",
     "apps.cart",
     "apps.product",
+    "apps.order_item",
+    "apps.purchase",
 ]
 
 
