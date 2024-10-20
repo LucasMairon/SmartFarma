@@ -25,15 +25,6 @@ class UserCreateSerializer(serializers.ModelSerializer):
         fields = ('name', 'email', 'cpf', 'date_of_birth',
                   'phone_number', 'address', 'password')
 
-    def create(self, validated_data):
-        address_data = validated_data.pop('address')
-        password = validated_data.pop('password')
-        instance = User.objects.create_user(**validated_data)
-        instance.set_password(password)
-        instance.save()
-        Address.objects.create(user=instance, is_default=True, **address_data)
-        return instance
-
 
 class UserUpdateSerializer(serializers.ModelSerializer):
 
@@ -41,17 +32,3 @@ class UserUpdateSerializer(serializers.ModelSerializer):
         model = User
         fields = ('name', 'email', 'cpf', 'date_of_birth',
                   'phone_number', 'password')
-
-    def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.email = validated_data.get('email', instance.email)
-        instance.cpf = validated_data.get('cpf', instance.cpf)
-        instance.date_of_birth = validated_data.get(
-            'date_of_birth', instance.date_of_birth)
-        instance.phone_number = validated_data.get(
-            'phone_number', instance.phone_number)
-        password = validated_data.get('password')
-        if password:
-            instance.set_password(password)
-        instance.save()
-        return instance
