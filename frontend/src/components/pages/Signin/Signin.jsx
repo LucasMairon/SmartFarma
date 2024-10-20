@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import styles from "./signin.module.css"
 
 function Signin() {
   return (
-    <div>
+    <div className={styles.testeEstilos}>
       <h1>
         Sign In
       </h1>

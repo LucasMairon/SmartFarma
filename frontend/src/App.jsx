@@ -1,10 +1,13 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+// components import
+import Footer from "./components/layout/footer/Footer";
+import Container from "./components/layout/container/Container";
+import Navbar from "./components/layout/navbar/Navbar";
+
+// pages import
 import Home from "./components/pages/Home/Home";
 import Signin from "./components/pages/Signin/signin";
 import Comprar from "./components/pages/Comprar/Comprar";
-import Container from "./components/layout/Container";
-import Navbar from "./components/layout/Navbar" // cabeçalho
-import Footer from "./components/layout/Footer" // rodapé
 import ProductList from "./components/pages/ProductList/ProductList";
 import AddProduct from "./components/pages/AddProduct/AddProduct";
 
