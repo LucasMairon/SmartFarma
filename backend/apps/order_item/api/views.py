@@ -6,5 +6,5 @@ from rest_framework.permissions import IsAuthenticated
 class OrderItemModelViewSet(viewsets.ModelViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 

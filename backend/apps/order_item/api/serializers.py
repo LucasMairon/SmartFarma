@@ -8,7 +8,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
         model = OrderItem
         fields= "__all__"
     
-    def get_total_price(self, obj):
+    def get_price(self, obj):
         product_price = 0.00
         if(obj.quantity):
             product_price = obj.quantity * obj.product.price
