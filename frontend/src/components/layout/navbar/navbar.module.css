@@ -4,6 +4,7 @@
     align-items: center; /* Centraliza verticalmente a logo e os itens da lista */
     background-color: #222;
     padding: 1em;
+    padding-left: 100px;
 }
 
 .navbar img {

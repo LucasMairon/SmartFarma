@@ -1,0 +1,49 @@
+/* Estilos da seção de conteúdo Row */
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 70px;
+  }
+  
+  .col2 {
+    flex-basis: 50%;
+    min-width: 300px;
+  }
+  
+  .col2 img {
+    max-width: 100%;
+    padding: 50px 0;
+  }
+  
+  .col2 h1 {
+    font-size: 50px;
+    line-height: 60px;
+    margin: 25px 0;
+  }
+  
+  .button {
+    display: inline-block;
+    background: #ff523b;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+  }
+  
+  .button:hover {
+    background: #563434;
+  }
+  
+  /* Responsividade */
+  @media only screen and (max-width: 600px) {
+    .row {
+      text-align: center;
+    }
+  
+    .col2 {
+      flex-basis: 100%;
+    }
+  }  
