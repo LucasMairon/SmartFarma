@@ -1,7 +1,6 @@
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Home from "./components/pages/Home/Home";
-import Login from "./components/pages/Login/Login";
+import Signin from "./components/pages/Signin/signin";
 import Comprar from "./components/pages/Comprar/Comprar";
 import Container from "./components/layout/Container";
 import Navbar from "./components/layout/Navbar" // cabeçalho
@@ -19,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Comprar" element={<Comprar />} />
-          <Route path="/Login" element={<Login />} />
+          <Route path="/signin" element={<Signin />} />
           <Route path="/products" element={<ProductList />} />
           <Route path="/add-product" element={<AddProduct />} />
         </Routes>
