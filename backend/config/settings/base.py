@@ -173,7 +173,7 @@ SIMPLE_JWT = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Sistema de vendas de medicamnetos online API',
+    'TITLE': 'Sistema de vendas de medicamentos online API',
     'DESCRIPTION': 'Your project description',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
