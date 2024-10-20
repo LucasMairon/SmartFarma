@@ -21,6 +21,12 @@ function Navbar() {
           <li className={styles.item}>
             <Link to="/Login">Login</Link>
           </li>
+          <li className={styles.item}>
+            <Link to="/products">Listar Produtos</Link>
+          </li>
+          <li className={styles.item}>
+            <Link to="/add-product">Add Produtos</Link>
+          </li>
         </ul>
       </Container>
     </nav>

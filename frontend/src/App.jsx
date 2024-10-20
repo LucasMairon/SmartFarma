@@ -6,7 +6,8 @@ import Comprar from "./components/pages/Comprar/Comprar";
 import Container from "./components/layout/Container";
 import Navbar from "./components/layout/Navbar" // cabeçalho
 import Footer from "./components/layout/Footer" // rodapé
-
+import ProductList from "./components/pages/ProductList/ProductList";
+import AddProduct from "./components/pages/AddProduct/AddProduct";
 
 // Digite rafce (React Arrow Function Component Export)
 
@@ -19,6 +20,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Comprar" element={<Comprar />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/add-product" element={<AddProduct />} />
         </Routes>
       </Container>
       < Footer/> 
