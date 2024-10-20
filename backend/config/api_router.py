@@ -9,6 +9,7 @@ from apps.users.api.views import UserModelViewSet, LogoutAPIView
 from apps.address.api.views import AddressModelViewSet
 from apps.product.api.views import ProductModelViewSet
 from apps.order_item.api.views import OrderItemModelViewSet
+from apps.purchase.api.views import PurchaseModelViewSet
 
 from rest_framework.routers import SimpleRouter, DefaultRouter
 
@@ -17,6 +18,7 @@ router.register('users', UserModelViewSet, basename='users')
 router.register("addresses", AddressModelViewSet, basename="addresses")
 router.register("products", ProductModelViewSet, basename="products")
 router.register("order_item", OrderItemModelViewSet, basename="order_item")
+router.register("purchase", PurchaseModelViewSet, basename="purchase")
 
 
 urlpatterns = [
