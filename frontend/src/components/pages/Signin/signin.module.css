@@ -1,0 +1,38 @@
+.signinContainer {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .signinForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signinForm label {
+    margin-bottom: 5px;
+  }
+  
+  .signinForm input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .signinForm button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .signinForm button:hover {
+    background-color: #45a049;
+  }
+  
