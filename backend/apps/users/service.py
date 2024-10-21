@@ -1,8 +1,6 @@
-from django.db import transaction
 from apps.shared.base_service import BaseService
 from apps.shared.custom_api_exception import CustomAPIException
 from .repository import UserRepository
-from apps.address.service import AddressService
 
 
 class UserService(BaseService):
@@ -19,12 +17,7 @@ class UserService(BaseService):
     @staticmethod
     def create_instance(validated_data):
         try:
-            with transaction.atomic():
-                address_data = validated_data.pop("address")
-                user = UserRepository.create_instance(validated_data)
-                address_data['user'] = user.id
-                AddressService.create_instance(address_data)
-                return user
+            return UserRepository.create_instance(validated_data)
         except CustomAPIException:
             raise
         except Exception as e:
