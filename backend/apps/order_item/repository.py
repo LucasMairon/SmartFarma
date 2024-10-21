@@ -1,7 +1,6 @@
 from apps.shared.base_repositoy import BaseRepository
 from .models import OrderItem
 from apps.shared.custom_api_exception import CustomAPIException
-from apps.product.api.serializers import ProductSerializer
 
 
 class OrderItemRepository(BaseRepository):
@@ -12,18 +11,12 @@ class OrderItemRepository(BaseRepository):
 
     @staticmethod
     def get_all_instances():
-        order_itens = OrderItem.objects.all()
-        for order_item in order_itens:
-            product = ProductSerializer(order_item.product)
-            order_item.product = product
-            order_item.save()
         return OrderItem.objects.all()
 
     @staticmethod
     def get_instance_by_id(instance_id):
         try:
             order_item = OrderItem.objects.get(id=instance_id)
-            order_item.product = ProductSerializer(order_item.product)
             return order_item
         except OrderItem.DoesNotExist:
             raise CustomAPIException(
@@ -48,3 +41,7 @@ class OrderItemRepository(BaseRepository):
             order_item.delete()
         except OrderItem.DoesNotExist:
             raise CustomAPIException('order item not found', status_code=404)
+
+    @staticmethod
+    def get_all_instances_for_product(product_id):
+        return OrderItem.objects.filter(product=product_id)

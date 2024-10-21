@@ -59,20 +59,20 @@ class OrderItemService(BaseService):
             )
 
     @staticmethod
-    def check_if_there_is_enough_product(instance):
-        if instance.quantity > instance.product.available_quantity:
-            raise CustomAPIException(
-                detail='There is not enough product in stock', status_code=400
-            )
+    def check_if_there_is_enough_product_and_update_if_needed_order_items(
+            product):
+        order_item = OrderItemRepository.get_all_instances_for_product(
+            product.id)
+        for item in order_item:
+            if item.quantity < product.available_quantity:
+                OrderItemService.update_order_quantity(
+                    item.id,
+                    product.available_quantity
+                )
 
     @staticmethod
-    def update_product_available_quantity(instance):
-        ProductService.update_product_available_quantity(
-            instance.product, instance.quantity)
-
-    @staticmethod
-    def update_order_quantity(instance):
+    def update_order_quantity(order_id, quantity):
         data = {
-            '.quantity': instance.quantity - instance.product.quantity
+            'quantity': quantity
         }
-        OrderItemRepository.update_instance(instance.id, data)
+        OrderItemRepository.update_instance(order_id, data)
