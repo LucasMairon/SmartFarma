@@ -1,7 +1,6 @@
 from apps.shared.base_service import BaseService
 from apps.shared.custom_api_exception import CustomAPIException
 from .repository import CartRepository
-from apps.users.service import UserService
 
 
 class CartService(BaseService):
@@ -10,7 +9,7 @@ class CartService(BaseService):
     def list_all_instances():
         try:
             return CartRepository.get_all_instances()
-        except CustomAPIException as e:
+        except CustomAPIException:
             raise
         except Exception as e:
             raise CustomAPIException(detail=str(e), status_code=500)
@@ -19,7 +18,7 @@ class CartService(BaseService):
     def create_instance(validated_data):
         try:
             return CartRepository.create_instance(validated_data)
-        except CustomAPIException as e:
+        except CustomAPIException:
             raise
         except Exception as e:
             raise CustomAPIException(
@@ -29,7 +28,7 @@ class CartService(BaseService):
     def retrieve_instance(instance_id):
         try:
             return CartRepository.get_instance_by_id(instance_id)
-        except CustomAPIException as e:
+        except CustomAPIException:
             raise
         except Exception as e:
             raise CustomAPIException(detail=str(e), status_code=500)
@@ -38,7 +37,7 @@ class CartService(BaseService):
     def update_instance_and_partial_update(instance_id, validated_data):
         try:
             return CartRepository.update_instance(instance_id, validated_data)
-        except CustomAPIException as e:
+        except CustomAPIException:
             raise
         except Exception as e:
             raise CustomAPIException(
@@ -48,7 +47,7 @@ class CartService(BaseService):
     def destroy_instance(instance_id):
         try:
             CartRepository.delete_instance(instance_id)
-        except CustomAPIException as e:
+        except CustomAPIException:
             raise
         except Exception as e:
             raise CustomAPIException(
@@ -61,9 +60,11 @@ class CartService(BaseService):
                 user_id)
             if queryset_carrinho.exists():
                 return queryset_carrinho.first()
-            return CartRepository.create_instance({'user': user_id, 'is_active': True})
-        except CustomAPIException as e:
+            return CartRepository.create_instance(
+                {'user': user_id, 'is_active': True})
+        except CustomAPIException:
             raise
         except Exception as e:
             raise CustomAPIException(
-                detail="Failed to get or create user: " + str(e), status_code=500)
+                detail="Failed to get or create user: " + str(e),
+                status_code=500)
