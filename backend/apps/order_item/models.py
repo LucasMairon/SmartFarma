@@ -9,6 +9,10 @@ class OrderItem(models.Model):
     cart = models.ForeignKey(
         Cart, on_delete=models.CASCADE, related_name='order_items')
 
+    @property
+    def price(self):
+        return float(self.product.price) * self.quantity
+
     class Meta:
         verbose_name = 'Order_Item'
         verbose_name_plural = 'Order_Items'

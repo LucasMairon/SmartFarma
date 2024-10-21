@@ -12,3 +12,4 @@ class UserSerializer(serializers.ModelSerializer):
                   'phone_number', "street", "city", 'state', 'number',
                   'neighborhood', 'complement', 'reference_point',
                   'zip_code', 'password')
+        write_only = ('password',)

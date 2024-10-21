@@ -43,7 +43,9 @@ class Product(models.Model):
         validators=[sku_regex_validator]
     )
     image = models.ImageField(
-        upload_to='Imagem_Produto/%Y/%m'
+        upload_to='Imagem_Produto/%Y/%m',
+        blank=True,
+        null=True
     )
 
     class Meta:
