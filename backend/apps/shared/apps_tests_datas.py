@@ -81,11 +81,10 @@ class Tests_datas:
                           neighborhood="teste user neighborhood",
                           complement="teste user complement",
                           reference_point="teste user reference_point",
-                          zip_code="teste user zip_code",
+                          zip_code="12345678",
                           status="A",
                           user_id=None,
                           cart_id=None
-
                           ):
         return {
             'total_price': total_price,
