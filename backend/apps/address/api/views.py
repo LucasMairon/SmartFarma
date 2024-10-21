@@ -3,6 +3,9 @@ from rest_framework.permissions import IsAuthenticated
 from ..models import Address
 from .serializers import AddressSerializer
 from ..service import AddressService
+from rest_framework.response import Response
+from rest_framework import status
+from ..shared.custom_api_exception import CustomAPIException
 
 
 class AddressModelViewSet(viewsets.ModelViewSet):
@@ -13,7 +16,8 @@ class AddressModelViewSet(viewsets.ModelViewSet):
     def list(self, request):
         try:
             addresss = AddressService.list_all_instances()
-            return Response(AddressSerializer(addresss, many=True).data, status=status.HTTP_200_OK)
+            return Response(AddressSerializer(addresss, many=True).data,
+                            status=status.HTTP_200_OK)
         except CustomAPIException as e:
             return Response({"detail": str(e)}, status=e.status_code)
 
@@ -22,14 +26,16 @@ class AddressModelViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         try:
             address = AddressService.create_instance(serializer.validated_data)
-            return Response(AddressSerializer(address).data, status=status.HTTP_201_CREATED)
+            return Response(AddressSerializer(address).data,
+                            status=status.HTTP_201_CREATED)
         except CustomAPIException as e:
             return Response({"detail": str(e)}, status=e.status_code)
 
     def retrieve(self, request, pk=None):
         try:
             address = AddressService.retrieve_instance(pk)
-            return Response(AddressSerializer(address).data, status=status.HTTP_200_OK)
+            return Response(AddressSerializer(address).data,
+                            status=status.HTTP_200_OK)
         except CustomAPIException as e:
             return Response({"detail": str(e)}, status=e.status_code)
 
@@ -41,7 +47,8 @@ class AddressModelViewSet(viewsets.ModelViewSet):
             serializer.is_valid(raise_exception=True)
             address = AddressService.update_instance_and_partial_update(
                 pk, serializer.validated_data)
-            return Response(AddressSerializer(address).data, status=status.HTTP_200_OK)
+            return Response(AddressSerializer(address).data,
+                            status=status.HTTP_200_OK)
         except CustomAPIException as e:
             return Response({"detail": str(e)}, status=e.status_code)
 
@@ -53,7 +60,8 @@ class AddressModelViewSet(viewsets.ModelViewSet):
             serializer.is_valid(raise_exception=True)
             address = AddressService.update_instance_and_partial_update(
                 pk, serializer.validated_data)
-            return Response(AddressSerializer(address).data, status=status.HTTP_200_OK)
+            return Response(AddressSerializer(address).data,
+                            status=status.HTTP_200_OK)
         except CustomAPIException as e:
             return Response({"detail": str(e)}, status=e.status_code)
 
