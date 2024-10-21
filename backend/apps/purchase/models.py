@@ -1,7 +1,7 @@
 from django.db import models
 from apps.users.models import CustomUser
 from apps.cart.models import Cart
-from apps.address.validators import(
+from .validators import (
     city_regex_validator,
     street_regex_validator,
     state_regex_validator,
@@ -16,6 +16,7 @@ STATUS_CHOICES = {
     'A': 'Em Aberto',
     'F': 'Fechada',
 }
+
 
 class Purchase(models.Model):
     total_price = models.DecimalField(max_digits=7, decimal_places=2)
@@ -49,7 +50,6 @@ class Purchase(models.Model):
     status = models.CharField(max_length=1, choices=STATUS_CHOICES)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
-
 
     class Meta:
         verbose_name = 'purchase'

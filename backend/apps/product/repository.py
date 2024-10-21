@@ -2,6 +2,7 @@ from apps.shared.base_repositoy import BaseRepository
 from .models import Product
 from apps.shared.custom_api_exception import CustomAPIException
 
+
 class ProductRepository(BaseRepository):
 
     @staticmethod
@@ -11,7 +12,7 @@ class ProductRepository(BaseRepository):
     @staticmethod
     def get_all_instances():
         return Product.objects.all()
-    
+
     @staticmethod
     def get_instance_by_id(instance_id):
         try:
@@ -20,7 +21,7 @@ class ProductRepository(BaseRepository):
             raise CustomAPIException(
                 detail='product not found', status_code=404
             )
-    
+
     @staticmethod
     def update_instance(instance_id, **validated_data):
         try:
@@ -33,7 +34,7 @@ class ProductRepository(BaseRepository):
             raise CustomAPIException(
                 'product not found', status_code=404
             )
-        
+
     @staticmethod
     def delete_instance(instance_id):
         try:
@@ -43,4 +44,3 @@ class ProductRepository(BaseRepository):
             raise CustomAPIException(
                 'product not found', status_code=404
             )
-    

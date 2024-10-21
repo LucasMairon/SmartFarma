@@ -12,7 +12,15 @@ from .validators import (
     legal_age_validator,
     name_regex_validator,
     phone_number_regex_validator,
-    valid_cpf_validator
+    valid_cpf_validator,
+    city_regex_validator,
+    state_regex_validator,
+    neighborhood_regex_validator,
+    complement_regex_validator,
+    reference_point_regex_validator,
+    street_regex_validator,
+    zip_code_regex_validator,
+    number_regex_validator
 )
 
 
@@ -46,6 +54,32 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         _("phone number"),
         max_length=11,
         validators=[phone_number_regex_validator, MinLengthValidator(11)]
+    )
+    street = models.CharField(
+        max_length=100,
+        validators=[street_regex_validator]
+    )
+    city = models.CharField(max_length=50, validators=[city_regex_validator])
+    state = models.CharField(max_length=50, validators=[state_regex_validator])
+    number = models.CharField(
+        max_length=50,
+        validators=[number_regex_validator]
+    )
+    neighborhood = models.CharField(
+        max_length=50,
+        validators=[neighborhood_regex_validator]
+    )
+    complement = models.CharField(
+        max_length=50,
+        validators=[complement_regex_validator]
+    )
+    reference_point = models.CharField(
+        max_length=50,
+        validators=[reference_point_regex_validator]
+    )
+    zip_code = models.CharField(
+        max_length=50,
+        validators=[zip_code_regex_validator]
     )
     is_staff = models.BooleanField(
         _("staff status"),
