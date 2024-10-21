@@ -10,4 +10,5 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'name', 'email', 'cpf', 'date_of_birth',
                   'phone_number', "street", "city", 'state', 'number',
-                  'neighborhood', 'complement', 'reference_point', 'zip_code')
+                  'neighborhood', 'complement', 'reference_point',
+                  'zip_code', 'password')
