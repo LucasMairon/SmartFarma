@@ -72,8 +72,35 @@ class Tests_datas:
             'cart_id': cart_id,
         }
 
-    def get_purchase_data(self):
-        return ...
+    def get_purchase_data(self, total_price=1.1,
+                          payment_method="teste metodo de pagamento",
+                          street="teste user street",
+                          city="teste user city",
+                          state="teste user state",
+                          number="teste user number",
+                          neighborhood="teste user neighborhood",
+                          complement="teste user complement",
+                          reference_point="teste user reference_point",
+                          zip_code="12345678",
+                          status="A",
+                          user_id=None,
+                          cart_id=None
+                          ):
+        return {
+            'total_price': total_price,
+            'payment_method': payment_method,
+            'street': street,
+            'city': city,
+            'state': state,
+            'number': number,
+            'neighborhood': neighborhood,
+            'complement': complement,
+            'reference_point': reference_point,
+            'zip_code': zip_code,
+            'status': status,
+            'user_id': user_id,
+            'cart_id': cart_id
+        }
 
 
 tests_datas = Tests_datas()

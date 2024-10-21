@@ -2,16 +2,17 @@ from apps.shared.base_repositoy import BaseRepository
 from apps.shared.custom_api_exception import CustomAPIException
 from .models import Purchase
 
+
 class PurchaseRepository(BaseRepository):
 
     @staticmethod
     def create_instance(validated_data):
         return Purchase.objects.create(**validated_data)
-    
+
     @staticmethod
     def get_all_instances():
         return Purchase.objects.all()
-    
+
     @staticmethod
     def get_instance_by_id(instance_id):
         try:
@@ -20,7 +21,7 @@ class PurchaseRepository(BaseRepository):
             raise CustomAPIException(
                 detail='purchase not found', status_code=404
             )
-        
+
     @staticmethod
     def update_instance(instance_id, validated_data):
         try:
@@ -33,7 +34,7 @@ class PurchaseRepository(BaseRepository):
             raise CustomAPIException(
                 'purchase not found', status_code=404
             )
-        
+
     @staticmethod
     def delete_instance(instance_id):
         try:
