@@ -7,7 +7,7 @@ import Navbar from "./components/layout/navbar/Navbar";
 
 // pages import
 import Home from "./components/pages/Home/Home";
-import Signin from "./components/pages/Signin/signin";
+import Signin from "./components/pages/Signin/Signin";
 import Comprar from "./components/pages/Comprar/Comprar";
 import ProductList from "./components/pages/ProductList/ProductList";
 import AddProduct from "./components/pages/AddProduct/AddProduct";
