@@ -108,7 +108,7 @@ const Signup = () => {
         <input type="text" name="zip_code" value={userData.zip_code} onChange={handleInputChange} required />
 
         <label>Senha:</label>
-        <input type="password" name="password" value={userData.password} onChange={handleInputChange} required />
+        <input type="text" name="password" value={userData.password} onChange={handleInputChange} required />
 
         <button type="submit">Cadastrar</button>
       </form>
