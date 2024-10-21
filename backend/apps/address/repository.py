@@ -7,7 +7,7 @@ class AddressRepository(BaseRepository):
 
     @staticmethod
     def create_instance(validated_data):
-        return Address.objects.objects.create(**validated_data)
+        return Address.objects.create(**validated_data)
 
     @staticmethod
     def get_all_instances():
