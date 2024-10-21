@@ -16,3 +16,11 @@ class OrderItemSerializer(serializers.ModelSerializer):
         if (obj.quantity):
             product_price = obj.quantity * obj.product.price
         return product_price
+
+
+class OrderItemCreateAndpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = OrderItem
+        fields = ("quantity", "product", "cart")
+

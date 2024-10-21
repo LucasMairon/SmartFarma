@@ -1,7 +1,6 @@
 from rest_framework import viewsets
 from apps.order_item.models import OrderItem
-from apps.order_item.api.serializers import OrderItemSerializer
-from apps.product.api.serializers import ProductSerializer
+from apps.order_item.api.serializers import OrderItemSerializer, OrderItemCreateAndpdateSerializer
 from rest_framework.permissions import IsAuthenticated
 from apps.order_item.service import OrderItemService
 from rest_framework.response import Response
@@ -11,8 +10,12 @@ from rest_framework import status
 
 class OrderItemModelViewSet(viewsets.ModelViewSet):
     queryset = OrderItem.objects.all()
-    serializer_class = OrderItemSerializer
     permission_classes = [IsAuthenticated]
+
+    def get_serializer_class(self):
+        if self.action not in ('list', 'retrieve'):
+            return OrderItemCreateAndpdateSerializer
+        return OrderItemSerializer
 
     def list(self, request):
         try:
