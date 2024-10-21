@@ -1,16 +1,15 @@
-from django.db import transaction
 from apps.shared.base_service import BaseService
 from apps.shared.custom_api_exception import CustomAPIException
-from .repository import UserRepository
-from apps.address.service import AddressService
+from .repository import CartRepository
+from apps.users.service import UserService
 
 
-class UserService(BaseService):
+class CartService(BaseService):
 
     @staticmethod
     def list_all_instances():
         try:
-            return UserRepository.get_all_instances()
+            return CartRepository.get_all_instances()
         except CustomAPIException as e:
             raise
         except Exception as e:
@@ -19,12 +18,7 @@ class UserService(BaseService):
     @staticmethod
     def create_instance(validated_data):
         try:
-            with transaction.atomic():
-                address_data = validated_data.pop("address")
-                user = UserRepository.create_instance(validated_data)
-                address_data['user'] = user.id
-                AddressService.create_instance(address_data)
-                return user
+            return CartRepository.create_instance(validated_data)
         except CustomAPIException as e:
             raise
         except Exception as e:
@@ -34,7 +28,7 @@ class UserService(BaseService):
     @staticmethod
     def retrieve_instance(instance_id):
         try:
-            return UserRepository.get_instance_by_id(instance_id)
+            return CartRepository.get_instance_by_id(instance_id)
         except CustomAPIException as e:
             raise
         except Exception as e:
@@ -43,7 +37,7 @@ class UserService(BaseService):
     @staticmethod
     def update_instance_and_partial_update(instance_id, validated_data):
         try:
-            return UserRepository.update_instance(instance_id, validated_data)
+            return CartRepository.update_instance(instance_id, validated_data)
         except CustomAPIException as e:
             raise
         except Exception as e:
@@ -53,10 +47,23 @@ class UserService(BaseService):
     @staticmethod
     def destroy_instance(instance_id):
         try:
-            user = UserRepository.get_instance_by_id(instance_id)
-            UserRepository.delete_instance(instance_id)
+            CartRepository.delete_instance(instance_id)
         except CustomAPIException as e:
             raise
         except Exception as e:
             raise CustomAPIException(
                 detail="Failed to delete user: " + str(e), status_code=500)
+
+    @staticmethod
+    def get_or_create(user_id):
+        try:
+            queryset_carrinho = CartRepository.get_all_instances_for_user(
+                user_id)
+            if queryset_carrinho.exists():
+                return queryset_carrinho.first()
+            return CartRepository.create_instance({'user': user_id, 'is_active': True})
+        except CustomAPIException as e:
+            raise
+        except Exception as e:
+            raise CustomAPIException(
+                detail="Failed to get or create user: " + str(e), status_code=500)
