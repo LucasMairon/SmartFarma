@@ -11,8 +11,7 @@ import Signin from "./components/pages/Signin/signin";
 import Comprar from "./components/pages/Comprar/Comprar";
 import ProductList from "./components/pages/ProductList/ProductList";
 import AddProduct from "./components/pages/AddProduct/AddProduct";
-
-// Digite rafce (React Arrow Function Component Export)
+import Signup from "./components/pages/Signup/Signup";
 
 function App() {
   return (
@@ -23,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Comprar" element={<Comprar />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/signup" element={<Signup/>} />
           <Route path="/products" element={<ProductList />} />
           <Route path="/add-product" element={<AddProduct />} />
         </Routes>
