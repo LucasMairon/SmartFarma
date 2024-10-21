@@ -61,7 +61,7 @@ class CartService(BaseService):
             if queryset_carrinho.exists():
                 return queryset_carrinho.first()
             return CartRepository.create_instance(
-                {'user': user_id, 'is_active': True})
+                {'user_id': user_id, 'is_active': True})
         except CustomAPIException:
             raise
         except Exception as e:

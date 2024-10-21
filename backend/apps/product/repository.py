@@ -6,7 +6,7 @@ from apps.shared.custom_api_exception import CustomAPIException
 class ProductRepository(BaseRepository):
 
     @staticmethod
-    def create_instance(**validated_data):
+    def create_instance(validated_data):
         return Product.objects.create(**validated_data)
 
     @staticmethod
@@ -23,7 +23,7 @@ class ProductRepository(BaseRepository):
             )
 
     @staticmethod
-    def update_instance(instance_id, **validated_data):
+    def update_instance(instance_id, validated_data):
         try:
             product = Product.objects.get(id=instance_id)
             for attr, value in validated_data.items():
