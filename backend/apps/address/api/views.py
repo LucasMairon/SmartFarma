@@ -5,7 +5,7 @@ from .serializers import AddressSerializer
 from ..service import AddressService
 from rest_framework.response import Response
 from rest_framework import status
-from ..shared.custom_api_exception import CustomAPIException
+from apps.shared.custom_api_exception import CustomAPIException
 
 
 class AddressModelViewSet(viewsets.ModelViewSet):
