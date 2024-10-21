@@ -2,6 +2,7 @@ from django.db import transaction
 from apps.shared.base_service import BaseService
 from apps.shared.custom_api_exception import CustomAPIException
 from .repository import UserRepository
+from apps.address.service import AddressService
 
 
 class UserService(BaseService):
