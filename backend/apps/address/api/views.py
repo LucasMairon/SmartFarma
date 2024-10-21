@@ -47,7 +47,7 @@ class AddressModelViewSet(viewsets.ModelViewSet):
 
     def partial_update(self, request, pk=None):
         try:
-            address = AddressService.retrieve_instance(pf)
+            address = AddressService.retrieve_instance(pk)
             serializer = self.serializer_class(
                 address, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)

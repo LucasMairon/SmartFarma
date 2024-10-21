@@ -24,13 +24,14 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
 
 THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework_simplejwt",
     "drf_spectacular",
-    "corsheaders",
+    # "corsheaders",
 ]
 
 LOCAL_APPS = [
@@ -64,6 +65,7 @@ CORS_ALLOW_ALL_ORIGIN = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",
+    "http://localhost:5173", # dominio do VITE React
 ]
 
 ROOT_URLCONF = 'config.urls'
