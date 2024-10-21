@@ -1,0 +1,44 @@
+{
+  "name": "userteste",
+  "email": "teste@gmail.com",
+  "cpf": "05363226006",
+  "date_of_birth": "2000-10-21",
+  "phone_number": "22094714229",
+  "street": "Rua da Sorte",
+  "city": "Pau dos Ferros",
+  "state": "RN",
+  "number": "123",
+  "neighborhood": "aaa",
+  "complement": "casa",
+  "reference_point": "bbb",
+  "zip_code": "18074848",
+  "password": "abc"
+}
+
+Imagem:
+
+{
+  "name": "Paraacetamol 20mg",
+  "price": "29.8",
+  "available_quantity": 20,
+  "description": "Paraacetamol medicamento generico",
+  "brand": "aaaa",
+  "maker": "bbbbbbbbbb",
+  "weight": "89",
+  "ean": "0704629368981",
+  "sku": "U2O1RAEJNCXD4",
+  "image": "string"
+}
+
+
+{
+  "name": "Paraacetamol",
+  "price": "29.8",
+  "available_quantity": 20,
+  "description": "Paraacetamol medicamento generico",
+  "brand": "aaaa",
+  "maker": "bbbbbbbbbb",
+  "weight": "89",
+  "ean": "0704629368981",
+  "sku": "U2O1RAEJNCXD4"
+}
